@@ -8,13 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>git_use | Shinomiya-Ayase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="git的使用登陆github必须先创建SSH key因为本地Git仓库和GitHub仓库之间的传输是通过SSH加密传输的，GitHub需要识别是否是你推送，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送，所以需要配置ssh key。  1.创建SSH Key。在用户主目录（C:\Users\Administrator）下，看看有没有.ssh文件，如果有，再看文件下有没有id_rsa和">
+<meta property="og:type" content="article">
 <meta property="og:title" content="git_use">
-<meta property="og:url" content="http://yoursite.com/2020/03/06/git_use/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/03/07/git_use/index.html">
 <meta property="og:site_name" content="Shinomiya-Ayase">
+<meta property="og:description" content="git的使用登陆github必须先创建SSH key因为本地Git仓库和GitHub仓库之间的传输是通过SSH加密传输的，GitHub需要识别是否是你推送，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送，所以需要配置ssh key。  1.创建SSH Key。在用户主目录（C:\Users\Administrator）下，看看有没有.ssh文件，如果有，再看文件下有没有id_rsa和">
 <meta property="og:locale" content="zh">
-<meta property="article:published_time" content="2020-03-06T14:26:56.789Z">
-<meta property="article:modified_time" content="2020-03-07T10:41:19.221Z">
+<meta property="article:published_time" content="2020-03-07T10:59:53.583Z">
+<meta property="article:modified_time" content="2020-03-07T11:18:05.471Z">
 <meta property="article:author" content="HouFeng">
 <meta name="twitter:card" content="summary">
   
@@ -162,23 +164,83 @@
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <!-- 
   
     <h1 class="article-title" itemprop="name">
       git_use
     </h1>
   
-
+ -->
         
-        <a href="/2020/03/06/git_use/" class="archive-article-date">
-  	<time datetime="2020-03-06T14:26:56.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+        <a href="/2020/03/07/git_use/" class="archive-article-date">
+  	<time datetime="2020-03-07T10:59:53.583Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><h3 id="登陆github必须先创建SSH-key"><a href="#登陆github必须先创建SSH-key" class="headerlink" title="登陆github必须先创建SSH key"></a>登陆github必须先创建SSH key</h3><p>因为本地Git仓库和GitHub仓库之间的传输是通过SSH加密传输的，GitHub需要识别是否是你推送，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送，所以需要配置ssh key。</p>
+<hr>
+<h4 id="1-创建SSH-Key。"><a href="#1-创建SSH-Key。" class="headerlink" title="1.创建SSH Key。"></a>1.创建SSH Key。</h4><p>在用户主目录（<code>C:\Users\Administrator</code>）下，看看有没有.ssh文件，如果有，再看文件下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果已经有了，可直接到下一步。如果没有，打开Git Bash，输入命令，创建SSH Key</p>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"你自己注册GitHub的邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="2-接下来到GitHub上，打开“Account-settings”–“SSH-Keys”页面，然后点击“Add-SSH-Key”，填上Title（随意写），在Key文本框里粘贴-id-rsa-pub文件里的全部内容。"><a href="#2-接下来到GitHub上，打开“Account-settings”–“SSH-Keys”页面，然后点击“Add-SSH-Key”，填上Title（随意写），在Key文本框里粘贴-id-rsa-pub文件里的全部内容。" class="headerlink" title="2.接下来到GitHub上，打开“Account settings”–“SSH Keys”页面，然后点击“Add SSH Key”，填上Title（随意写），在Key文本框里粘贴 id_rsa.pub文件里的全部内容。"></a>2.接下来到GitHub上，打开“Account settings”–“SSH Keys”页面，然后点击“Add SSH Key”，填上Title（随意写），在Key文本框里粘贴 id_rsa.pub文件里的全部内容。</h4><p> <code>id_rsa.pub</code> 默认在<code>C:\Users\Administrator\.ssh</code></p>
+<p>每台想要登陆某个github账号的主机都需要有一个对应的key，例如你有一个github账号，你在你的笔记本和台式上都要创建key</p>
+<h4 id="3-git-bash里输入下面的命令登陆"><a href="#3-git-bash里输入下面的命令登陆" class="headerlink" title="3.git bash里输入下面的命令登陆"></a>3.git bash里输入下面的命令登陆</h4><hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>如果看到 hi + 你的用户名说明密钥验证通过了，你已经可以上传下载了</p>
+<h4 id="4-设置username和email，因为github每次commit都会记录他们"><a href="#4-设置username和email，因为github每次commit都会记录他们" class="headerlink" title="4.设置username和email，因为github每次commit都会记录他们"></a>4.设置username和email，因为github每次commit都会记录他们</h4><p>git commit 命令会记录提交者的信息，所以使用git前必须先添加两条信息</p>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"你的GitHub登陆名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>git仓库速度对比</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">对比</th>
+<th align="center">github</th>
+<th align="center">gitee</th>
+<th align="center">coding</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">访问速度</td>
+<td align="center">慢的一批</td>
+<td align="center">很快</td>
+<td align="center">中规中矩</td>
+</tr>
+<tr>
+<td align="center">开源</td>
+<td align="center">免费</td>
+<td align="center">要钱</td>
+<td align="center">要钱</td>
+</tr>
+</tbody></table>
+<p><strong>初始化仓库</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git init</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>添加到本地仓库</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git add .</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>提交到本地仓库</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"你要提交的信息"</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>与远程仓库关联</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin https://你的git地址</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>先更新到主分支</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git pull origin master</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>推送到远程仓库</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push</span></span><br></pre></td></tr></table></figure>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=88972979&auto=1&height=430"></iframe>
       
 
       
@@ -267,7 +329,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/06/git_use/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/07/git_use/" alt="微信分享二维码">
     </div>
 </div>
 
