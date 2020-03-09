@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Shinomiya-Ayase</title>
+  <title>Tag: github | Shinomiya-Ayase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Shinomiya-Ayase">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/github/index.html">
 <meta property="og:site_name" content="Shinomiya-Ayase">
 <meta property="og:locale" content="zh">
 <meta property="article:author" content="HouFeng">
@@ -158,322 +158,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-elementUI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/09/elementUI/">ElementUI+Vue整合SpringBoot CRUD操作</a>
-    </h1>
-  
- -->
-        
-        <a href="/2020/03/09/elementUI/" class="archive-article-date">
-  	<time datetime="2020-03-09T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
-</a>
-        
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>此整合没有分离前后端只提供后端在SpringBoot中的整合思路(针对后端)</strong></p>
-<h1 id="1-创建SpringBoot项目"><a href="#1-创建SpringBoot项目" class="headerlink" title="1. 创建SpringBoot项目"></a>1. 创建SpringBoot项目</h1><p><img src="/images/springboot/1.png" alt="IDEA使用初始化器创建项目">  </p>
-<ul>
-<li><code>Web</code> 基于SpringBoot的web应用</li>
-<li><code>Thymeleaf</code> 模板引擎主要用于获取Session的值</li>
-<li><code>MySQL</code> 数据库驱动包</li>
-<li><code>DevTools</code> SpringBoot热部署</li>
-<li><code>Lombok</code> 简化实体类  </li>
-</ul>
-<h1 id="2-pom-xml文件添加如下依赖"><a href="#2-pom-xml文件添加如下依赖" class="headerlink" title="2.pom.xml文件添加如下依赖"></a>2.pom.xml文件添加如下依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.44<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>其中MybatisPlus简化数据库操作,PageHelper用于分页</strong>  </p>
-<h1 id="3-创建数据库表"><a href="#3-创建数据库表" class="headerlink" title="3.创建数据库表"></a>3.创建数据库表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE test;</span><br><span class="line">USE test;</span><br><span class="line">DROP TABLE IF EXISTS &#96;t_stu&#96;;</span><br><span class="line">CREATE TABLE &#96;t_stu&#96;  (</span><br><span class="line">  &#96;id&#96; int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  &#96;name&#96; varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,</span><br><span class="line">  &#96;gender&#96; varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,</span><br><span class="line">  &#96;clazz&#96; varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  &#96;score&#96; int(11) NULL DEFAULT NULL,</span><br><span class="line">  &#96;bir&#96; date NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (&#96;id&#96;) USING BTREE</span><br><span class="line">);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (1, &#39;余胜军&#39;, &#39;男&#39;, &#39;s1t80&#39;, 92, &#39;1994-03-10&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (2, &#39;黄辉&#39;, &#39;男&#39;, &#39;s1t80&#39;, 91, &#39;1986-08-07&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (3, &#39;汪保国&#39;, &#39;男&#39;, &#39;s1t80&#39;, 76, &#39;1991-06-04&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (4, &#39;商宇彤&#39;, &#39;男&#39;, &#39;s1t80&#39;, 98, &#39;1994-05-17&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (5, &#39;应明珠&#39;, &#39;女&#39;, &#39;s1t81&#39;, 95, &#39;1997-06-15&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (6, &#39;廖一帆&#39;, &#39;男&#39;, &#39;s1t81&#39;, 52, &#39;1993-07-06&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (7, &#39;陈杰&#39;, &#39;男&#39;, &#39;s1t80&#39;, 83, &#39;1993-08-08&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (8, &#39;胡文鑫&#39;, &#39;女&#39;, &#39;s1t81&#39;, 82, &#39;1991-07-24&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (9, &#39;刘坤&#39;, &#39;男&#39;, &#39;s1t80&#39;, 25, &#39;1996-03-26&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (10, &#39;蒋文哲&#39;, &#39;男&#39;, &#39;s1t81&#39;, 64, &#39;1986-05-21&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (11, &#39;冷泽华&#39;, &#39;男&#39;, &#39;s1t81&#39;, 72, &#39;1993-09-27&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (12, &#39;曹敏&#39;, &#39;女&#39;, &#39;s1t81&#39;, 66, &#39;1989-03-15&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (13, &#39;陈秦定&#39;, &#39;女&#39;, &#39;s1t80&#39;, 89, &#39;1995-05-11&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (14, &#39;赵娇&#39;, &#39;女&#39;, &#39;s1t80&#39;, 73, &#39;1993-05-20&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (15, &#39;柳星&#39;, &#39;女&#39;, &#39;s1t82&#39;, 22, &#39;1998-06-12&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (16, &#39;胡月&#39;, &#39;女&#39;, &#39;s1t82&#39;, 87, &#39;2000-02-09&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (17, &#39;郑克&#39;, &#39;男&#39;, &#39;s1t82&#39;, 68, &#39;1983-11-29&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (18, &#39;柳月&#39;, &#39;女&#39;, &#39;s1t83&#39;, 97, &#39;2000-03-31&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (19, &#39;吴敏&#39;, &#39;男&#39;, &#39;s1t83&#39;, 78, &#39;1983-11-30&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (20, &#39;周静&#39;, &#39;女&#39;, &#39;s1t83&#39;, 27, &#39;1981-12-30&#39;);</span><br><span class="line">INSERT INTO &#96;t_stu&#96; VALUES (22, &#39;aaa&#39;, &#39;男&#39;, &#39;sss&#39;, 56, &#39;2020-03-03&#39;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-使用IDEA-EasyCode-插件生成dao-service-entity-controller"><a href="#4-使用IDEA-EasyCode-插件生成dao-service-entity-controller" class="headerlink" title="4.使用IDEA(EasyCode)插件生成dao,service,entity,controller"></a>4.使用IDEA(EasyCode)插件生成dao,service,entity,controller</h1><p><img src="/images/springboot/2.png" alt="插件生成代码">  </p>
-<h1 id="5-修改实体类Stu"><a href="#5-修改实体类Stu" class="headerlink" title="5.修改实体类Stu"></a>5.修改实体类Stu</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"serial"</span>)</span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@TableName</span>(<span class="string">"t_stu"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="meta">@TableId</span>(type = IdType.AUTO)</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String gender;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String clazz;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer score;</span><br><span class="line">    <span class="meta">@JsonFormat</span>(pattern = <span class="string">"yyyy-MM-dd"</span>,timezone = <span class="string">"Asia/Shanghai"</span>)</span><br><span class="line">    <span class="meta">@JSONField</span>(format = <span class="string">"yyyy-MM-dd"</span>)</span><br><span class="line">    <span class="keyword">private</span> Date bir;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>实体类注解说明</strong><br><code>@SuppressWarnings(&quot;serial&quot;)</code>: 去掉因命名不规范导致的波浪线<br><code>@Data</code>: Lombok注解省去Get,Set方法<br><code>@TableName(&quot;t_stu&quot;)</code>: 表名和类名不一致时需要指定表名<br><code>@TableId(type = IdType.AUTO)</code>: 标识主键自增长<br><code>@JsonFormat(pattern = &quot;yyyy-MM-dd&quot;,timezone = &quot;Asia/Shanghai&quot;)</code>: 格式化日期指定时区<br><code>@JSONField(format = &quot;yyyy-MM-dd&quot;)</code> 使用此注解页面就不需要转换格式  </p>
-<h1 id="6-编写控制器CRUD"><a href="#6-编写控制器CRUD" class="headerlink" title="6.编写控制器CRUD"></a>6.编写控制器CRUD</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"student"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentController</span> <span class="keyword">extends</span> <span class="title">ApiController</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 服务对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> StudentService studentService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过主键查询单条数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index 当前页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> size 每页显示多少条</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> PageInfo对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/&#123;index&#125;/&#123;size&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> PageInfo <span class="title">selectAll</span><span class="params">(@PathVariable(required = <span class="keyword">false</span>)</span> <span class="keyword">int</span> index,</span></span><br><span class="line"><span class="function">                              @<span class="title">PathVariable</span><span class="params">(required = <span class="keyword">false</span>)</span> <span class="keyword">int</span> size)</span>&#123;</span><br><span class="line">        PageHelper.startPage(index, size);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PageInfo(studentService.list());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过主键查询单条数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id 主键</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 单条数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">selectOne</span><span class="params">(@PathVariable Serializable id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> success(<span class="keyword">this</span>.studentService.getById(id));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 新增数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> student 实体对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 新增结果</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">insert</span><span class="params">(@RequestBody Student student)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> success(<span class="keyword">this</span>.studentService.save(student));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 修改数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> student 实体对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 修改结果</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PutMapping</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(@RequestBody Student student)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> success(<span class="keyword">this</span>.studentService.updateById(student));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id 删除ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 删除结果</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(@PathVariable <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> success(<span class="keyword">this</span>.studentService.removeById(id));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>其中<code>@PutMapping</code>,<code>@DeleteMapping</code>是SpringBoot2.0新增注解可以代表修改和删除</strong><br><strong>这么做的好处:见名知意,省去请求URL中无意义的类似add/update/del之类的拼接页面通过注解判断CRUD操作</strong></p>
-<h1 id="7-编写页面完成CRUD操作"><a href="#7-编写页面完成CRUD操作" class="headerlink" title="7.编写页面完成CRUD操作"></a>7.编写页面完成CRUD操作</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>学生管理<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/css/element-ui.css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/vue-resource.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/element-ui.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-card</span> <span class="attr">shadow</span>=<span class="string">"always"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"header"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>学生管理<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/student/exportToExcel"</span> <span class="attr">class</span>=<span class="string">"ui mini button green exc"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon file excel"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>导出数据到EXCEL<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-table</span> <span class="attr">id</span>=<span class="string">"table"</span> <span class="attr">:data</span>=<span class="string">"stus"</span> <span class="attr">stripe</span> <span class="attr">border</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"编号"</span> <span class="attr">sortable</span> <span class="attr">prop</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"姓名"</span> <span class="attr">prop</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"性别"</span> <span class="attr">prop</span>=<span class="string">"gender"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"班级"</span> <span class="attr">sortable</span> <span class="attr">prop</span>=<span class="string">"clazz"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"分数"</span> <span class="attr">sortable</span> <span class="attr">prop</span>=<span class="string">"score"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"考核结果"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot-scope</span>=<span class="string">"&#123;row&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-tag</span> <span class="attr">v-if</span>=<span class="string">"row.score&gt;=90"</span> <span class="attr">type</span>=<span class="string">"primary"</span>&gt;</span>优秀<span class="tag">&lt;/<span class="name">el-tag</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-tag</span> <span class="attr">v-if</span>=<span class="string">"row.score&gt;=80&amp;&amp;row.score&lt;90"</span> <span class="attr">type</span>=<span class="string">"success"</span>&gt;</span>良好<span class="tag">&lt;/<span class="name">el-tag</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-tag</span> <span class="attr">v-if</span>=<span class="string">"row.score&gt;=60&amp;&amp;row.score&lt;80"</span> <span class="attr">type</span>=<span class="string">"warning"</span>&gt;</span>合格<span class="tag">&lt;/<span class="name">el-tag</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-tag</span> <span class="attr">v-if</span>=<span class="string">"row.score&lt;60"</span> <span class="attr">type</span>=<span class="string">"danger"</span>&gt;</span>不及格<span class="tag">&lt;/<span class="name">el-tag</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"出生日期"</span> <span class="attr">sortable</span> <span class="attr">prop</span>=<span class="string">"bir"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">label</span>=<span class="string">"操作"</span> <span class="attr">width</span>=<span class="string">"200px"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot</span>=<span class="string">"header"</span> <span class="attr">slot-scope</span>=<span class="string">"scope"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"edit('')"</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">size</span>=<span class="string">"small"</span> <span class="attr">icon</span>=<span class="string">"el-icon-plus"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot-scope</span>=<span class="string">"&#123;row&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">size</span>=<span class="string">"small"</span> @<span class="attr">click</span>=<span class="string">"edit(row)"</span> <span class="attr">type</span>=<span class="string">"warning"</span> <span class="attr">icon</span>=<span class="string">"el-icon-edit"</span>&gt;</span>修改<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">size</span>=<span class="string">"small"</span> @<span class="attr">click</span>=<span class="string">"del(row)"</span> <span class="attr">type</span>=<span class="string">"danger"</span> <span class="attr">icon</span>=<span class="string">"el-icon-delete"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-pagination</span> <span class="attr">background</span> <span class="attr">:current-page.sync</span>=<span class="string">"page.current"</span> <span class="attr">:page-size.sync</span>=<span class="string">"page.size"</span> <span class="attr">:page-sizes</span>=<span class="string">"[1, 3, 5, 10, 50, 100]"</span></span></span><br><span class="line"><span class="tag">                    @<span class="attr">current-change</span>=<span class="string">"currentChange"</span> @<span class="attr">size-change</span>=<span class="string">"sizeChange"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">layout</span>=<span class="string">"total, sizes, prev, pager, next, jumper"</span> <span class="attr">:total</span>=<span class="string">"page.total"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-pagination</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-card</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-dialog</span> @<span class="attr">close</span>=<span class="string">"isShow=false"</span> <span class="attr">:visible</span>=<span class="string">"isShow"</span> <span class="attr">:title</span>=<span class="string">"isAdd+'学生'"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-form</span> @<span class="attr">submit.native.prevent</span>=<span class="string">"submit"</span> <span class="attr">:model</span>=<span class="string">"stu"</span> <span class="attr">label-width</span>=<span class="string">"80px"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"姓名"</span>&gt;</span><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"stu.name"</span>/&gt;</span><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"性别"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-switch</span> <span class="attr">v-model</span>=<span class="string">"stu.gender"</span> <span class="attr">active-value</span>=<span class="string">"女"</span> <span class="attr">active-text</span>=<span class="string">"女"</span> <span class="attr">inactive-value</span>=<span class="string">"男"</span> <span class="attr">inactive-text</span>=<span class="string">"男"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-switch</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"班级"</span>&gt;</span><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"stu.clazz"</span>/&gt;</span><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"分数"</span>&gt;</span><span class="tag">&lt;<span class="name">el-slider</span> <span class="attr">v-model</span>=<span class="string">"stu.score"</span> <span class="attr">show-input</span>&gt;</span><span class="tag">&lt;/<span class="name">el-slider</span>&gt;</span><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"出生日期"</span>&gt;</span><span class="tag">&lt;<span class="name">el-date-picker</span> <span class="attr">value-format</span>=<span class="string">"yyyy-MM-dd"</span> <span class="attr">type</span>=<span class="string">"date"</span> <span class="attr">v-model</span>=<span class="string">"stu.bir"</span>/&gt;</span><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-form-item</span>&gt;</span><span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">native-type</span>=<span class="string">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-dialog</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/xlsx.full.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/FileSaver.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el: <span class="string">'#app'</span>,</span></span><br><span class="line">    data: &#123;</span><br><span class="line">      stus: [],</span><br><span class="line"><span class="actionscript">      stu: &#123;gender: <span class="string">'男'</span>&#125;,</span></span><br><span class="line">      page: &#123;</span><br><span class="line">        current: 1,</span><br><span class="line">        total: 0,</span><br><span class="line">        size: 3</span><br><span class="line">      &#125;,</span><br><span class="line"><span class="actionscript">      isShow: <span class="literal">false</span>,</span></span><br><span class="line"><span class="actionscript">      isAdd: <span class="string">'新增'</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">async</span> init() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> &#123;list, total, pageNum&#125; = (<span class="keyword">await</span> <span class="keyword">this</span>.$http.get(<span class="string">`/student/<span class="subst">$&#123;<span class="keyword">this</span>.page.current&#125;</span>/<span class="subst">$&#123;<span class="keyword">this</span>.page.size&#125;</span>`</span>)).body</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.stus = list</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.page.current = pageNum</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.page.total = total</span></span><br><span class="line">      &#125;,</span><br><span class="line"><span class="javascript">      <span class="keyword">async</span> submit() &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.$message.success(<span class="keyword">this</span>.isAdd + <span class="string">'成功'</span>)</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> type = <span class="keyword">this</span>.isAdd == <span class="string">'新增'</span> ? <span class="string">'post'</span> : <span class="string">'put'</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">await</span> <span class="keyword">this</span>.$http[type](<span class="string">'/student'</span>, <span class="keyword">this</span>.stu)</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.isShow = <span class="literal">false</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.init()</span></span><br><span class="line">      &#125;,</span><br><span class="line">      edit(row) &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.isAdd = row == <span class="string">''</span> ? <span class="string">'新增'</span> : <span class="string">'修改'</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.stu = row == <span class="string">''</span> ? &#123;&#125; : <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(row))</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.isShow = <span class="literal">true</span></span></span><br><span class="line">      &#125;,</span><br><span class="line"><span class="javascript">      <span class="keyword">async</span> del(row) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">try</span> &#123;<span class="keyword">await</span> <span class="keyword">this</span>.$confirm(<span class="string">`确定要删除<span class="subst">$&#123;row.id&#125;</span>？`</span>)&#125; <span class="keyword">catch</span> (e) &#123;<span class="keyword">return</span>&#125;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">await</span> <span class="keyword">this</span>.$http.delete(<span class="string">`/student/<span class="subst">$&#123;row.id&#125;</span>`</span>)</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.$message.success(<span class="string">'删除成功'</span>)</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.page.current = <span class="number">1</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.init()</span></span><br><span class="line">      &#125;,</span><br><span class="line">      currentChange(val) &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.page.current = val</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.init()</span></span><br><span class="line">      &#125;,</span><br><span class="line">      sizeChange(val) &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.page.current = <span class="number">1</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.page.size = val</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.init()</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.init()</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="8-页面效果"><a href="#8-页面效果" class="headerlink" title="8.页面效果"></a>8.页面效果</h1><p><img src="/images/springboot/3.png" alt="页面效果"> </p>
-<h2 id="8-1新增和修改共用一个页面"><a href="#8-1新增和修改共用一个页面" class="headerlink" title="8.1新增和修改共用一个页面"></a>8.1新增和修改共用一个页面</h2><p><img src="/images/springboot/4.png" alt="页面效果"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
+    
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Element-UI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java/Web前端//" class="article-tag-list-link color1">Web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/09/elementUI/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hystrix_Dashboard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+        <div class="archives">
     
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/09/Hystrix_Dashboard/">Spring Cloud 断路器监控(Hystrix Dashboard)以及碰到的问题</a>
-    </h1>
-  
- -->
-        
-        <a href="/2020/03/09/Hystrix_Dashboard/" class="archive-article-date">
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/09/git_use/" class="archive-article-date">
   	<time datetime="2020-03-09T02:06:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一：Hystrix-Dashboard简介"><a href="#一：Hystrix-Dashboard简介" class="headerlink" title="一：Hystrix Dashboard简介"></a>一：Hystrix Dashboard简介</h4><p>在微服务架构中为例保证程序的可用性，防止程序出错导致网络阻塞，出现了断路器模型。断路器的状况反应了一个程序的可用性和健壮性，它是一个重要指标。Hystrix Dashboard是作为断路器状态的一个组件，提供了数据监控和友好的图形化界面。</p>
-<p>我们的工程基于上一篇文章中的工程，SpringBoot的版本为2.0.3</p>
-<h4 id="二：断路器监控的配置（基于SpringBoot2-0-3）"><a href="#二：断路器监控的配置（基于SpringBoot2-0-3）" class="headerlink" title="二：断路器监控的配置（基于SpringBoot2.0.3）"></a>二：断路器监控的配置（基于SpringBoot2.0.3）</h4><p>首先我们导入pom依赖，假如你的SpringBoot的版本为2.0以下的版本，那么pom只需要导入：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-hystrix-dashboard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>但是假如你的SpringBoot的版本为2.0以上的版本时候，比如我现在使用的是SpringBoot2.0.3版本，那么就需要导入如下的依赖，否则，就会出现<code>@EnableHystrixDashboard</code>类找不到的情况。</p>
-<blockquote>
-<p>spring-cloud-starter-hystrix-dashboard的起步依赖</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-hystrix-dashboard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在主程序启动类中加入<code>@EnableHystrixDashboard</code>注解，开启hystrixDashboard。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span></span><br><span class="line"><span class="meta">@EnableHystrix</span></span><br><span class="line"><span class="meta">@EnableHystrixDashboard</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    SpringApplication.run(Application<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打开浏览器：访问<a href="http://localhost:8000/hystrix" target="_blank" rel="noopener">http://localhost:8000/hystrix</a></p>
-<p>界面如下</p>
-<p><img src="/images/springcloud/Hystrix%E4%BB%AA%E8%A1%A8%E7%9B%98.png" alt="Hystrix仪表盘"></p>
-<p>当我们在输入框当中输入：<a href="http://localhost:8000/hystrix.stream" target="_blank" rel="noopener">http://localhost:8000/hystrix.stream</a></p>
-<p>Title里面输入Hystrix，却出现了如下的界面:</p>
-<p><img src="images/springcloud/Hystrix%E9%94%99%E8%AF%AF.png" alt="Hystrix错误"></p>
-<p>页面提示Unable to connect to Command Metric Stream。</p>
-<p>如何解决？</p>
-<blockquote>
-<p>我们只需要在application.yml配置文件当中引入如下配置：注意最后的*一定要加上引号，不然会启动报错。</p>
-</blockquote>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#management.endpoints.web.exposure.include=</span></span><br><span class="line"><span class="attr">management:</span></span><br><span class="line">  <span class="attr">endpoints:</span></span><br><span class="line">    <span class="attr">web:</span></span><br><span class="line">     <span class="attr">exposure:</span></span><br><span class="line">       <span class="attr">include:</span> <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Spring Cloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hystrix</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/09/Hystrix_Dashboard/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git_use" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/09/git_use/">git的使用</a>
+      <a class="archive-article-title" href="/2020/03/09/git_use/">git的使用</a>
     </h1>
   
- -->
-        
-        <a href="/2020/03/09/git_use/" class="archive-article-date">
-  	<time datetime="2020-03-09T02:06:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="登陆github必须先创建SSH-key"><a href="#登陆github必须先创建SSH-key" class="headerlink" title="登陆github必须先创建SSH key"></a>登陆github必须先创建SSH key</h1><p>因为本地Git仓库和GitHub仓库之间的传输是通过SSH加密传输的，GitHub需要识别是否是你推送，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送，所以需要配置ssh key。</p>
-<hr>
-<h2 id="1-创建SSH-Key。"><a href="#1-创建SSH-Key。" class="headerlink" title="1.创建SSH Key。"></a>1.创建SSH Key。</h2><p>在用户主目录（<code>C:\Users\Administrator</code>）下，看看有没有.ssh文件，如果有，再看文件下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果已经有了，可直接到下一步。如果没有，打开Git Bash，输入命令，创建SSH Key</p>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"你自己注册GitHub的邮箱"</span></span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="2-接下来到GitHub上，打开“Account-settings”–“SSH-Keys”页面，然后点击“Add-SSH-Key”，填上Title（随意写），在Key文本框里粘贴-id-rsa-pub文件里的全部内容。"><a href="#2-接下来到GitHub上，打开“Account-settings”–“SSH-Keys”页面，然后点击“Add-SSH-Key”，填上Title（随意写），在Key文本框里粘贴-id-rsa-pub文件里的全部内容。" class="headerlink" title="2.接下来到GitHub上，打开“Account settings”–“SSH Keys”页面，然后点击“Add SSH Key”，填上Title（随意写），在Key文本框里粘贴 id_rsa.pub文件里的全部内容。"></a>2.接下来到GitHub上，打开“Account settings”–“SSH Keys”页面，然后点击“Add SSH Key”，填上Title（随意写），在Key文本框里粘贴 id_rsa.pub文件里的全部内容。</h2><p> <code>id_rsa.pub</code> 默认在<code>C:\Users\Administrator\.ssh</code></p>
-<p>每台想要登陆某个github账号的主机都需要有一个对应的key，例如你有一个github账号，你在你的笔记本和台式上都要创建key</p>
-<h2 id="3-git-bash里输入下面的命令登陆"><a href="#3-git-bash里输入下面的命令登陆" class="headerlink" title="3.git bash里输入下面的命令登陆"></a>3.git bash里输入下面的命令登陆</h2><hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>如果看到 hi + 你的用户名说明密钥验证通过了，你已经可以上传下载了</p>
-<h2 id="4-设置username和email，因为github每次commit都会记录他们"><a href="#4-设置username和email，因为github每次commit都会记录他们" class="headerlink" title="4.设置username和email，因为github每次commit都会记录他们"></a>4.设置username和email，因为github每次commit都会记录他们</h2><p>git commit 命令会记录提交者的信息，所以使用git前必须先添加两条信息</p>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"你的GitHub登陆名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="5-git仓库和一些命令"><a href="#5-git仓库和一些命令" class="headerlink" title="5.git仓库和一些命令"></a>5.git仓库和一些命令</h2><p><strong>git仓库速度对比</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">对比</th>
-<th align="center">github</th>
-<th align="center">gitee</th>
-<th align="center">coding</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">访问速度</td>
-<td align="center">慢的一批</td>
-<td align="center">很快</td>
-<td align="center">中规中矩</td>
-</tr>
-<tr>
-<td align="center">开源</td>
-<td align="center">免费</td>
-<td align="center">要钱</td>
-<td align="center">要钱</td>
-</tr>
-</tbody></table>
-<p><strong>初始化仓库</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git init</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>添加到本地仓库</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git add .</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>提交到本地仓库</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"你要提交的信息"</span></span></span><br></pre></td></tr></table></figure>
-
-<p><strong>与远程仓库关联</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin https://你的git地址</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>先更新到主分支</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git pull origin master</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>推送到远程仓库</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -485,7 +197,7 @@
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -498,39 +210,17 @@
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/09/git_use/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -561,10 +251,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
