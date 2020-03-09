@@ -1952,7 +1952,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #12fff6;
+  background: #d4ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2872,7 +2872,7 @@ body {
     width: 100%;
     padding: 0;
     z-index: 1050;
-    background: url("/images/anime/ACG.GY_32.jpg") no-repeat center;
+    background: url("/images/anime/ACG.GY_30.jpg") no-repeat center;
     background-size: cover;
   }
   #menu a {
