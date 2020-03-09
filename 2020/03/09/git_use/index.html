@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -92,7 +92,6 @@
 <meta property="og:url" content="http://yoursite.com/2020/03/09/git_use/index.html">
 <meta property="og:site_name" content="侯峰的博客">
 <meta property="og:description" content="登陆github必须先创建SSH key因为本地Git仓库和GitHub仓库之间的传输是通过SSH加密传输的，GitHub需要识别是否是你推送，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送，所以需要配置ssh key。  1.创建SSH Key。在用户主目录（C:\Users\Administrator）下，看看有没有.ssh文件，如果有，再看文件下有没有id_rsa和id_rsa">
-<meta property="og:locale" content="zh">
 <meta property="article:published_time" content="2020-03-09T02:06:29.000Z">
 <meta property="article:modified_time" content="2020-03-09T02:23:40.055Z">
 <meta property="article:author" content="HouFeng">
@@ -105,7 +104,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -113,7 +112,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -133,6 +132,8 @@
 
 
 
+
+
   <title>git的使用 | 侯峰的博客</title>
   
 
@@ -145,7 +146,7 @@
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -209,7 +210,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -219,7 +220,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -261,7 +262,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HouFeng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -283,9 +284,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-09T10:06:29+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T10:06:29+08:00">
                 2020-03-09
               </time>
             
@@ -304,7 +305,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -336,9 +337,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                  <span class="post-meta-item-text">字数统计&#58;</span>
                 
-                <span title="Words count in article">
+                <span title="字数统计">
                   496
                 </span>
               
@@ -352,9 +353,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="Reading time">
+                <span title="阅读时长">
                   1
                 </span>
               
@@ -536,10 +537,10 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -547,6 +548,10 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="HouFeng" />
             
               <p class="site-author-name" itemprop="name">HouFeng</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -560,7 +565,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                 <a href="/archives/%20%7C%7C%20archive">
               
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -570,8 +575,8 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
@@ -582,7 +587,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -607,9 +612,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/u/5484911144" target="_blank" title="Weibo">
+                    <a href="https://weibo.com/u/5484911144" target="_blank" title="weibo">
                       
-                        <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
                   </span>
                 
             </div>
@@ -666,7 +671,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -795,6 +800,13 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

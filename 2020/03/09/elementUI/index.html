@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -92,13 +92,12 @@
 <meta property="og:url" content="http://yoursite.com/2020/03/09/elementUI/index.html">
 <meta property="og:site_name" content="侯峰的博客">
 <meta property="og:description" content="此整合没有分离前后端只提供后端在SpringBoot中的整合思路(针对后端) 1. 创建SpringBoot项目    Web 基于SpringBoot的web应用 Thymeleaf 模板引擎主要用于获取Session的值 MySQL 数据库驱动包 DevTools SpringBoot热部署 Lombok 简化实体类    2.pom.xml文件添加如下依赖123456789101112131">
-<meta property="og:locale" content="zh">
 <meta property="og:image" content="http://yoursite.com/images/springboot/1.png">
 <meta property="og:image" content="http://yoursite.com/images/springboot/2.png">
 <meta property="og:image" content="http://yoursite.com/images/springboot/3.png">
 <meta property="og:image" content="http://yoursite.com/images/springboot/4.png">
 <meta property="article:published_time" content="2020-03-09T03:00:00.000Z">
-<meta property="article:modified_time" content="2020-03-09T03:36:58.382Z">
+<meta property="article:modified_time" content="2020-03-09T07:02:25.706Z">
 <meta property="article:author" content="HouFeng">
 <meta property="article:tag" content="Element-UI">
 <meta property="article:tag" content="Vue">
@@ -112,7 +111,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -120,7 +119,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -140,6 +139,8 @@
 
 
 
+
+
   <title>ElementUI+Vue整合SpringBoot CRUD操作 | 侯峰的博客</title>
   
 
@@ -152,7 +153,7 @@
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -216,7 +217,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -226,7 +227,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -268,7 +269,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HouFeng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -290,9 +291,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-09T11:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T11:00:00+08:00">
                 2020-03-09
               </time>
             
@@ -311,22 +312,11 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/Web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                  <a href="/categories/Web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">Web前端</span>
                   </a>
                 </span>
@@ -354,9 +344,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                  <span class="post-meta-item-text">字数统计&#58;</span>
                 
-                <span title="Words count in article">
+                <span title="字数统计">
                   2.3k
                 </span>
               
@@ -370,9 +360,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="Reading time">
+                <span title="阅读时长">
                   13
                 </span>
               
@@ -521,10 +511,10 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -532,6 +522,10 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="HouFeng" />
             
               <p class="site-author-name" itemprop="name">HouFeng</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -545,7 +539,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                 <a href="/archives/%20%7C%7C%20archive">
               
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -555,8 +549,8 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
@@ -567,7 +561,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -592,9 +586,9 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/u/5484911144" target="_blank" title="Weibo">
+                    <a href="https://weibo.com/u/5484911144" target="_blank" title="weibo">
                       
-                        <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
                   </span>
                 
             </div>
@@ -651,7 +645,7 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -780,6 +774,13 @@ border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,14
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
