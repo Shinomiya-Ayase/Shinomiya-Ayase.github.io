@@ -1952,7 +1952,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d4ffff;
+  background: #f9a499;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2853,7 +2853,7 @@ body {
   src: url("/fonts/FZSTK.TTF");
 }
 .site-title {
-  color: #ff69b4;
+  color: #ffd700;
   font-size: 24px !important;
   font-family: '方正舒体' !important;
 }
