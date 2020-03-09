@@ -445,7 +445,7 @@ body {
 .header-inner {
   margin: 0 auto;
   padding-top: 100px;
-  width: 700px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .header-inner {
@@ -457,7 +457,7 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: 700px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .main-inner {
@@ -474,7 +474,7 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 20px auto;
-  width: 700px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
@@ -1952,7 +1952,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b0ffd0;
+  background: #ff9;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2823,16 +2823,59 @@ pre {
   transform: rotate(360deg);
 }
 body {
+  background: url("/images/anime/ACG.GY_14.jpg") no-repeat fixed center;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+}
+@media screen and (max-width: 800px) {
+  body {
+    background: url("/images/anime/mobile.jpg") no-repeat fixed center;
+    background-size: cover;
+  }
+}
+@media screen and (max-width: 500px) {
+  .main-inner {
+    padding: 0 !important;
+    margin-top: 0 !important;
+    background: #fff;
+    opacity: 0.8;
+    min-height: 500px;
+  }
+}
+.main-inner {
+  margin-top: 60px;
+  padding: 60px 60px 60px 60px;
+  background: #fff;
+  opacity: 0.8;
+  min-height: 500px;
 }
 @font-face {
   font-family: Zitiming;
   src: url("/fonts/FZSTK.TTF");
 }
 .site-title {
+  color: #ff69b4;
   font-size: 24px !important;
   font-family: '方正舒体' !important;
+}
+.site-meta,
+.brand {
+  background: #333;
+  opacity: 0.5;
+  box-shadow: 0 0 15px #ffd700;
+}
+@media (max-width: 767px) {
+  .site-nav {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 1050;
+    background: url("/images/anime/ACG.GY_32.jpg") no-repeat center;
+    background-size: cover;
+  }
+  #menu a {
+    color: #f5f5f5;
+  }
 }
